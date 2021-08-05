@@ -5,15 +5,15 @@ from typing import Mapping, Any, Callable
 
 
 def _from_timestamp(value: int) -> datetime:
-    return datetime.fromtimestamp(value / 10 ** 9, tz=timezone.utc)
+    return str(datetime.fromtimestamp(value / 10 ** 9, tz=timezone.utc))
 
 
 def _from_event_time(value: int) -> datetime:
-    return datetime.fromtimestamp(value, tz=timezone.utc)
+    return str(datetime.fromtimestamp(value, tz=timezone.utc))
 
 
 def _from_price(value: int) -> Decimal:
-    return Decimal(value) / 10 ** 4
+    return str(Decimal(value) / 10 ** 4)
 
 
 def _decode_system_event(buf: bytes) -> Mapping[str, Any]:
